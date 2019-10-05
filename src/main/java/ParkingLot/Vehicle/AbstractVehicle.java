@@ -12,9 +12,20 @@ import ParkingLot.Enums.ParkingSpaceSize;
 abstract class AbstractVehicle {
     String licensePlate;
     ParkingSpaceSize parkingSpaceSizeNeeded;
+    VehicleType vehicleType;
 
-    public AbstractVehicle(String licensePlate, ParkingSpaceSize parkingSpaceSizeNeeded) {
+    @Override
+    public String toString() {
+        return "[" +
+                "" + licensePlate +
+                "|" + vehicleType +
+                "|" + parkingSpaceSizeNeeded +
+                '}';
+    }
+
+    public AbstractVehicle(String licensePlate, ParkingSpaceSize parkingSpaceSizeNeeded, VehicleType vehicleType) {
         this.licensePlate = licensePlate;
         this.parkingSpaceSizeNeeded = parkingSpaceSizeNeeded;
+        this.vehicleType = vehicleType;
     }
 }

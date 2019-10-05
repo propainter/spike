@@ -11,7 +11,10 @@ import ParkingLot.Enums.ParkingSpaceSize;
 public class Bus extends AbstractVehicle implements Vehicle{
 
     public Bus(String license) {
-        super(license, ParkingSpaceSize.LARGE);
+        super(license, ParkingSpaceSize.LARGE, VehicleType.PRIVATE);
+    }
+    public Bus(String license, VehicleType vehicleType) {
+        super(license, ParkingSpaceSize.LARGE, vehicleType);
     }
 
     @Override

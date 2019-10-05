@@ -21,12 +21,40 @@ public class Main {
         parkingLot.addParkingSpot(new ParkingSpot(4, Level.FIRST, ParkingSpaceSize.LARGE));
 
 
-        Vehicle johnCar = VehicleFactory.getCar("DL2344");
-        Vehicle johnBus = VehicleFactory.getBus("DLd343e34");
+        Vehicle johnCar = VehicleFactory.getCarPrivate("DL2344");
 
-//        ParkingSpot parkingSpot =  parkingLot.getFirstAvailableParkingSpot(johnCar);
-//        System.out.println(parkingSpot);
+        ParkingSpot parkingSpot =  parkingLot.getFirstAvailableParkingSpot(johnCar);
+        System.out.println(parkingSpot);
 
-        System.out.println(parkingLot.getFirstAvailableParkingSpot(johnBus));
+        System.out.println("\n====================================================================");
+        Vehicle johnBus = VehicleFactory.getBusPrivate("DLd343e34");
+        ParkingSpot parkingSpot1 = parkingLot.getFirstAvailableParkingSpot(johnBus);
+        System.out.println(String.format(
+                "Parking spot for %s :\n%s",
+                johnCar ,
+                parkingSpot1
+        ));
+        if(parkingSpot1 != null){
+            System.out.println(String.format("Parking it"));
+            ParkingSpot.parkVehicle(johnBus, parkingSpot1);
+        } else {
+            System.out.println(String.format("Cannot park!"));
+        }
+
+
+        System.out.println("\n====================================================================");
+        Vehicle jackBus = VehicleFactory.getBusPrivate("DL0101034");
+        ParkingSpot parkingSpot2 = parkingLot.getFirstAvailableParkingSpot(jackBus);
+        System.out.println(String.format(
+                "Parking spot for %s :\n%s",
+                jackBus,
+                parkingSpot2
+        ));
+        if(parkingSpot2 != null){
+            ParkingSpot.parkVehicle(jackBus, parkingSpot2);
+            System.out.println(String.format("Parking it"));
+        } else {
+            System.out.println(String.format("Cannot park!"));
+        }
     }
 }

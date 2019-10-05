@@ -11,8 +11,11 @@ import ParkingLot.Enums.ParkingSpaceSize;
 
 public class Car extends AbstractVehicle implements Vehicle{
 
+    public Car(String license, VehicleType vehicleType) {
+        super(license, ParkingSpaceSize.COMPACT, vehicleType);
+    }
     public Car(String license) {
-        super(license, ParkingSpaceSize.COMPACT);
+        super(license, ParkingSpaceSize.COMPACT, VehicleType.PRIVATE);
     }
 
     @Override

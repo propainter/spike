@@ -6,25 +6,16 @@
 
 package ParkingLot.Vehicle;
 
-import ParkingLot.Enums.ParkingSpaceSize;
+import ParkingLot.Enums.Size;
 
 
-public class Car extends AbstractVehicle implements Vehicle{
+public class Car extends AbstractVehicle {
 
-    public Car(String license, VehicleType vehicleType) {
-        super(license, ParkingSpaceSize.COMPACT, vehicleType);
+    public Car(LicensePlate license, VehicleType vehicleType) {
+        super(license, Size.COMPACT, vehicleType);
     }
-    public Car(String license) {
-        super(license, ParkingSpaceSize.COMPACT, VehicleType.PRIVATE);
-    }
-
-    @Override
-    public ParkingSpaceSize getParkingSpaceNeeded() {
-        return this.parkingSpaceSizeNeeded;
+    public Car(LicensePlate license) {
+        super(license, Size.COMPACT, VehicleType.PRIVATE);
     }
 
-    @Override
-    public String getLicensePlate() {
-        return null;
-    }
 }

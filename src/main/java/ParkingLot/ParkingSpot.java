@@ -7,18 +7,19 @@
 package ParkingLot;
 
 import ParkingLot.Enums.Level;
-import ParkingLot.Enums.ParkingSpaceSize;
+import ParkingLot.Enums.Size;
 import ParkingLot.Vehicle.Vehicle;
 
+import java.util.Objects;
 
 
 public class ParkingSpot {
     private Vehicle vehicle;
     private int spotNumber;
     private Level level;
-    private ParkingSpaceSize parkingSpotSize;
+    private Size parkingSpotSize;
 
-    public ParkingSpot(int spotNumber, Level level, ParkingSpaceSize parkingSpotSize) {
+    public ParkingSpot(int spotNumber, Level level, Size parkingSpotSize) {
         this.spotNumber = spotNumber;
         this.level = level;
         this.parkingSpotSize = parkingSpotSize;
@@ -48,12 +49,23 @@ public class ParkingSpot {
         return level;
     }
 
-    public ParkingSpaceSize getParkingSpotSize() {
+    public Size getParkingSpotSize() {
         return parkingSpotSize;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ParkingSpot that = (ParkingSpot) o;
+        return spotNumber == that.spotNumber &&
+                level == that.level;
+    }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(spotNumber, level);
+    }
 
     static Boolean parkVehicle(Vehicle vehicle, ParkingSpot parkingSpot){
         if(checkSpotForVehicle(vehicle, parkingSpot)){
@@ -64,7 +76,7 @@ public class ParkingSpot {
     }
 
     static Boolean checkSpotForVehicle(Vehicle vehicle, ParkingSpot parkingSpot){
-        if(parkingSpot.getVehicle() == null && parkingSpot.getParkingSpotSize().isGreaterThanEqualto(vehicle.getParkingSpaceNeeded())){
+        if(parkingSpot.getVehicle() == null && parkingSpot.getParkingSpotSize().isGreaterThanEqualto(vehicle.getSize())){
             return true;
         }
         return false;

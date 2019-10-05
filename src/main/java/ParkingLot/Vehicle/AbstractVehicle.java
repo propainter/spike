@@ -7,11 +7,11 @@
 package ParkingLot.Vehicle;
 
 
-import ParkingLot.Enums.ParkingSpaceSize;
+import ParkingLot.Enums.Size;
 
-abstract class AbstractVehicle {
-    String licensePlate;
-    ParkingSpaceSize parkingSpaceSizeNeeded;
+abstract class AbstractVehicle implements  Vehicle{
+    LicensePlate licensePlate;
+    Size size;
     VehicleType vehicleType;
 
     @Override
@@ -19,13 +19,21 @@ abstract class AbstractVehicle {
         return "[" +
                 "" + licensePlate +
                 "|" + vehicleType +
-                "|" + parkingSpaceSizeNeeded +
+                "|" + size +
                 '}';
     }
 
-    public AbstractVehicle(String licensePlate, ParkingSpaceSize parkingSpaceSizeNeeded, VehicleType vehicleType) {
+    public LicensePlate getLicensePlate() {
+        return licensePlate;
+    }
+    public Size getSize() {
+        return this.size;
+    }
+
+
+    public AbstractVehicle(LicensePlate licensePlate, Size parkingSpaceSizeNeeded, VehicleType vehicleType) {
         this.licensePlate = licensePlate;
-        this.parkingSpaceSizeNeeded = parkingSpaceSizeNeeded;
+        this.size = parkingSpaceSizeNeeded;
         this.vehicleType = vehicleType;
     }
 }

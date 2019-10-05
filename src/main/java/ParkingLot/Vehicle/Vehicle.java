@@ -6,9 +6,9 @@
 
 package ParkingLot.Vehicle;
 
-import ParkingLot.Enums.ParkingSpaceSize;
+import ParkingLot.Enums.Size;
 
 public interface Vehicle {
-    ParkingSpaceSize getParkingSpaceNeeded();
-    String getLicensePlate();
+    Size getSize();
+    LicensePlate getLicensePlate();
 }

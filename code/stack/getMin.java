@@ -3,7 +3,7 @@ public class Main {
         if(a.equals(b)){
             System.out.println(String.format("%s == %s", a, b));
         } else {
-            throw new AssertionFailure();
+            throw new AssertionError();
         }
     }
     public static void main(String[] args) {
